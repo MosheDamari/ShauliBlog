@@ -1,0 +1,22 @@
+﻿th, td {
+    border: 0.1px solid black;
+    padding: 5px;
+}
+table {
+    border-collapse: collapse;
+     width: 90%;
+}
+
+th {
+    text-align: center;
+    color: white;
+    background-color: #87a600;
+    font-family: myFirstFont;
+}
+tr:nth-child(even) {
+    background-color: #e2dfdf
+}
+.create-button{
+    font-weight: bold;
+    background-color:none;
+}

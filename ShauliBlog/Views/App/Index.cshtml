@@ -1,0 +1,102 @@
+﻿
+@model IEnumerable<ShauliBlog.Models.Post>
+
+
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<head>
+    <link href="~/css/blog.css" rel="stylesheet" type="text/css" />
+</head>
+
+
+<div id="content">
+    <div id="mainContent">
+        <div>
+            @Html.ActionLink("Create A New Post", "../Posts/Create", new { @style = "font - weight:bold;" })
+        </div>
+        @foreach (var item in Model)
+        {
+
+            <section>
+                <article class="blogPost">
+                    <header>
+                        <h1><u>@Html.DisplayFor(modelItem => item.headline)</u></h1>
+                        <p>Posted on @Html.DisplayFor(modelItem => item.postdate) by <a href=@Html.DisplayFor(modelItem => item.authorurl)> @Html.DisplayFor(modelItem => item.author)</a> - <a href="#comments">@Html.DisplayFor(modelItem => item.postComments.Count) comments</a></p>
+
+                    </header>
+                    <div>
+                        @Html.DisplayFor(modelItem => item.postcontent)
+
+                        <img src=@Html.DisplayFor(modelItem => item.image) alt="Flower" />
+                        <video controls="controls">
+                            <source src=@Html.DisplayFor(modelItem => item.video) type="video/mp4" />
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                </article>
+            </section>
+            <section id="comments">
+                <h3>Comments</h3>
+
+                @foreach (var comm in item.postComments)
+                {
+                    <article>
+                        <header>
+                            <a href=@Html.DisplayFor(commItem => comm.commentauthorurl)>@Html.DisplayFor(commItem => comm.commentauthor)</a> on @Html.DisplayFor(commItem => comm.commentdate)
+                        </header>
+                        <p>@Html.DisplayFor(commItem => comm.commentcontent)</p>
+
+                    </article>
+
+                }
+
+
+
+            </section>
+            <form action="../Comments/Create" method="post">
+                @Html.AntiForgeryToken()
+                <h3>Comment This Post </h3>
+                <p>
+                    <input type="hidden" name="PostID" id="PostID" value="@item.PostID" />
+                </p>
+                <p>
+                    <input type="hidden" name="post" id="post" value="@item" />
+                </p>
+                <p>
+                    <input type="hidden" name="commentdate" id="commentdate" value="@DateTime.Now" />
+                </p>
+                <p>
+                    <label for="commentheadline">Title</label>
+                    <div>
+                        <input name="commentheadline" id="commentheadline" type="text" required />
+                    </div>
+                </p>
+                <p>
+                    <label for="commentauthor">Author</label>
+                    <div>
+                        <input name="commentauthor" id="commentauthor" type="text" required />
+                    </div>
+                </p>
+                <p>
+                    <label for="commentauthorurl">Website</label>
+                    <div>
+                    <input name="commentauthorurl" id="commentauthorurl" type="url" />
+                    </div>
+                </p>
+                <p>
+                    <label for="commentcontent">Comment</label>
+                    <div>
+                        <textarea name="commentcontent" id="commentcontent" required></textarea>
+                    </div>
+                </p>
+                <p><input type="submit" value="Post" /></p>
+            </form>
+
+        }
+
+       
+    </div>
+</div>

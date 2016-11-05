@@ -1,0 +1,62 @@
+﻿@model IEnumerable<ShauliBlog.Models.Comment>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Manage Comments</h2>
+<head>
+    <link href="~/css/formLayout.css" rel="stylesheet" type="text/css" />
+</head>
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.commentheadline)
+        </th>
+        <th>
+            Headline
+        </th>
+        <th>
+            Author
+        </th>
+        <th>
+            WebSite
+        </th>
+        <th>
+            Comment
+        </th>
+        <th>
+            Options
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.post.headline)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.commentheadline)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.commentauthor)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.commentauthorurl)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.commentcontent)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.CommentID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.CommentID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.CommentID })
+        </td>
+    </tr>
+}
+
+</table>

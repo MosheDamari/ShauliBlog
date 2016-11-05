@@ -1,0 +1,77 @@
+﻿@model IEnumerable<ShauliBlog.Models.Post>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Manage Posts</h2>
+
+
+<head>
+    <link href="~/css/formLayout.css" rel="stylesheet" type="text/css" />
+</head>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.headline)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.author)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.authorurl)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.postdate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.postcontent)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.image)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.video)
+            </th>
+            <th>Options</th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.headline)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.author)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.authorurl)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.postdate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.postcontent)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.image)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.video)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.PostID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.PostID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.PostID })
+                    @Html.ActionLink("Comments", "../Comments/Index", new { id = item.PostID })|
+                </td>
+            </tr>
+        }
+
+    </table>
