@@ -17,5 +17,7 @@ namespace ShauliBlog.Models
         public string commentcontent { get; set; }
         public Post post { get; set; }
 
+
+
     }
 }
