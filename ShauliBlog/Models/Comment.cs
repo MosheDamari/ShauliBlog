@@ -16,5 +16,6 @@ namespace ShauliBlog.Models
         public string commentauthorurl { get; set; }
         public string commentcontent { get; set; }
         public Post post { get; set; }
+
     }
 }
