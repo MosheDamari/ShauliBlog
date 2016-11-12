@@ -33,11 +33,17 @@ body {
     background: #F0F0F0;
 }
 
+@font-face {
+    font-family: myFirstFont;
+    src: url(~/fonts/riesling-webfont.woff);
+}
 h1 {
-    font-size: 28px;
+    font-size: 36px;
     line-height: 44px;
     padding: 22px 0;
     text-shadow: 3px 3px #DDDDDD;
+    font-family: myFirstFont;
+    color: blue;
 }
 
 h2 {
@@ -47,15 +53,13 @@ h2 {
 }
 
 h3 {
+    align-content: center;
     font-size: 18px;
     line-height: 22px;
     padding: 11px 0;
+    color: orange;
 }
 
-@font-face {
-    font-family: myFirstFont;
-    src: url("~/fonts/riesling.ttf");
-}
 
 
 
@@ -100,7 +104,7 @@ nav ul li a {
 }
 
 nav ul li a:hover {
-    color: #fff;
+    color: red;
 }
 
 nav ul li.selected a {
@@ -123,7 +127,7 @@ nav ul li.subscribe a {
     text-align: center;
     -webkit-transition: all 2s ease-in-out;
     -moz-transition: all 2s ease-in-out;
-    -ms-transition: all 2s ease-in-out;
+    //-ms-transition: all 2s ease-in-out;
     transition: all 2s ease-in-out;
 }
 
@@ -155,9 +159,9 @@ nav ul li.subscribe a {
     background: linear-gradient(#ABE02D, #337423);
     /* Standard syntax (must be last) */
     /* Background-size not implemented yet */
-    -webkit-background-size: 100%;
-    -o-background-size: 100%;
-    -khtml-background-size: 100%;
+    //-webkit-background-size: 100%;
+    //-o-background-size: 100%;
+    //-khtml-background-size: 100%;
     /* Border-radius not implemented yet */
     -moz-border-radius: 22px;
     -webkit-border-radius: 22px;
